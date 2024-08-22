@@ -36,7 +36,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q0bj3"]
@@ -53,8 +53,16 @@ sprite_frames = SubResource("SpriteFrames_jm7kq")
 animation = &"Idle"
 autoplay = "Idle"
 frame = 2
-frame_progress = 0.37992
+frame_progress = 0.123415
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_q0bj3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 3
+limit_top = 193
+limit_bottom = 448
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

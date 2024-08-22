@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxarnoel81xd1"]
+[gd_scene load_steps=16 format=3 uid="uid://dxarnoel81xd1"]
 
 [ext_resource type="PackedScene" uid="uid://dpe4echn3rhm1" path="res://Scenes/Player.tscn" id="1_xobpt"]
 [ext_resource type="Texture2D" uid="uid://d2li25nvohq6r" path="res://Assets/sprites/world_tileset.png" id="2_25oty"]
 [ext_resource type="PackedScene" uid="uid://xa1kb1d62rn2" path="res://Scenes/platform.tscn" id="3_pixpg"]
 [ext_resource type="PackedScene" uid="uid://rhg00l2dojao" path="res://Scenes/coin.tscn" id="4_tbpcc"]
 [ext_resource type="PackedScene" uid="uid://tcovadcw0keg" path="res://Scenes/killzone.tscn" id="5_othfb"]
+[ext_resource type="PackedScene" uid="uid://11pret8j76xx" path="res://Scenes/enemy.tscn" id="6_xu5hf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrd82"]
 texture = ExtResource("2_25oty")
@@ -493,17 +494,6 @@ _data = {
 [node name="Player" parent="." instance=ExtResource("1_xobpt")]
 position = Vector2(43, 414)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(1, -5)
-zoom = Vector2(2, 2)
-limit_left = 3
-limit_top = 193
-limit_right = 805
-limit_bottom = 445
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(3, 0)
 tile_set = SubResource("TileSet_8e254")
@@ -516,7 +506,7 @@ layer_2/name = "Mid"
 layer_2/tile_data = PackedInt32Array(1703936, 0, 0, 1703937, 0, 0, 1703938, 0, 0, 1703939, 0, 0, 1703940, 0, 0, 1703941, 0, 0, 1703942, 0, 0, 1703943, 0, 0, 1703944, 0, 0, 1703945, 0, 0, 1703946, 0, 0, 1703947, 0, 0, 1703948, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1245228, 262144, 0, 1310763, 262144, 0, 1245229, 262144, 0, 1245230, 262144, 0, 1245231, 262144, 0, 1245232, 262144, 0, 1114132, 393216, 5, 1572872, 196608, 8, 1638408, 196608, 8, 1441800, 131072, 4)
 
 [node name="Killzone" parent="." instance=ExtResource("5_othfb")]
-position = Vector2(1, 444)
+position = Vector2(10, 448)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_e06kl")
@@ -560,3 +550,6 @@ libraries = {
 "": SubResource("AnimationLibrary_7t4dh")
 }
 autoplay = "move_v"
+
+[node name="Enemy" parent="." instance=ExtResource("6_xu5hf")]
+position = Vector2(131, 404)

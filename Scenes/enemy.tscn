@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://11pret8j76xx"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_2xo0j"]
+[ext_resource type="Texture2D" uid="uid://db8rqrye04bgp" path="res://Assets/sprites/slime_green.png" id="1_kumot"]
+[ext_resource type="PackedScene" uid="uid://tcovadcw0keg" path="res://Scenes/killzone.tscn" id="2_trti4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7l5q"]
+atlas = ExtResource("1_kumot")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvlm1"]
+atlas = ExtResource("1_kumot")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y56ux"]
+atlas = ExtResource("1_kumot")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_comdb"]
+atlas = ExtResource("1_kumot")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sj1gy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7l5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvlm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y56ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_comdb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t767b"]
+size = Vector2(12, 14)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_2xo0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sj1gy")
+autoplay = "default"
+frame = 2
+frame_progress = 0.935975
+
+[node name="Killzone" parent="." instance=ExtResource("2_trti4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_t767b")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-14, 14)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(14, 14)
