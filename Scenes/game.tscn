@@ -1,11 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxarnoel81xd1"]
+[gd_scene load_steps=18 format=3 uid="uid://dxarnoel81xd1"]
 
 [ext_resource type="PackedScene" uid="uid://dpe4echn3rhm1" path="res://Scenes/Player.tscn" id="1_xobpt"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_yyxi3"]
 [ext_resource type="Texture2D" uid="uid://djhjohr64n4ce" path="res://Assets/sprites/world_tileset.png" id="2_25oty"]
 [ext_resource type="PackedScene" uid="uid://xa1kb1d62rn2" path="res://Scenes/platform.tscn" id="3_pixpg"]
 [ext_resource type="PackedScene" uid="uid://rhg00l2dojao" path="res://Scenes/coin.tscn" id="4_tbpcc"]
 [ext_resource type="PackedScene" uid="uid://tcovadcw0keg" path="res://Scenes/killzone.tscn" id="5_othfb"]
 [ext_resource type="PackedScene" uid="uid://11pret8j76xx" path="res://Scenes/enemy.tscn" id="6_xu5hf"]
+[ext_resource type="FontFile" uid="uid://b53tlrsvnyf6m" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="8_cdxrd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrd82"]
 texture = ExtResource("2_25oty")
@@ -491,6 +493,10 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_yyxi3")
+
 [node name="Player" parent="." instance=ExtResource("1_xobpt")]
 position = Vector2(43, 414)
 
@@ -531,6 +537,9 @@ position = Vector2(243, 344)
 [node name="Coin7" parent="Coins" instance=ExtResource("4_tbpcc")]
 position = Vector2(296, 328)
 
+[node name="Coin5" parent="Coins" instance=ExtResource("4_tbpcc")]
+position = Vector2(746, 287)
+
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("3_pixpg")]
@@ -553,3 +562,28 @@ autoplay = "move_v"
 
 [node name="Enemy" parent="." instance=ExtResource("6_xu5hf")]
 position = Vector2(131, 404)
+
+[node name="Counter" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Counter"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Counter/Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 26.0
+offset_right = 78.0
+offset_bottom = 66.0
+
+[node name="Coins" type="Label" parent="Counter/Control/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_cdxrd")
+theme_override_font_sizes/font_size = 16
+text = "Coins: 0"
