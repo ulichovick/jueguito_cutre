@@ -498,7 +498,7 @@ unique_name_in_owner = true
 script = ExtResource("1_yyxi3")
 
 [node name="Player" parent="." instance=ExtResource("1_xobpt")]
-position = Vector2(43, 414)
+position = Vector2(40, 372)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(3, 0)
@@ -582,6 +582,7 @@ offset_right = 78.0
 offset_bottom = 66.0
 
 [node name="Coins" type="Label" parent="Counter/Control/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_cdxrd")
